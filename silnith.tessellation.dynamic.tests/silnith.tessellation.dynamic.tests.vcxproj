@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{9368C4EE-6D68-412A-873D-8DD6B7761617}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>silnithtessellationdynamictests</RootNamespace>
+    <RootNamespace>silnith::tessellation::tests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
   </PropertyGroup>
