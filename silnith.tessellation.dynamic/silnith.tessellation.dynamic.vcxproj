@@ -328,6 +328,7 @@
     <ClCompile Include="silnith\tessellation\vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="silnith.tessellation.dynamic.nuspec" />
     <None Include="silnith.tessellation.dynamic.props" />
     <None Include="silnith.tessellation.dynamic.targets" />
