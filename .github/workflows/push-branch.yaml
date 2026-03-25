@@ -1,0 +1,17 @@
+name: Push Branch
+
+on:
+  push:
+    branches:
+      - '*'
+
+env: {}
+
+jobs:
+  call-build:
+    name: Standard Build
+    uses: ./.github/workflows/build.yaml
+    with:
+      solution_file: example-nuget-native-dynamic.sln
+      project_name: silnith.tessellation.dynamic
+    secrets: inherit

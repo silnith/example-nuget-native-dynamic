@@ -13,6 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "silnith.tessellation.dynamic.tests", "silnith.tessellation.dynamic.tests\silnith.tessellation.dynamic.tests.vcxproj", "{9368C4EE-6D68-412A-873D-8DD6B7761617}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{2753EFD4-6B13-4EB8-8257-79E3F458B11E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{EB35BDD7-BED5-4268-8785-00ADDCA81D81}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yaml = .github\workflows\build.yaml
+		.github\workflows\push-branch.yaml = .github\workflows\push-branch.yaml
+		.github\workflows\push-release-tag.yaml = .github\workflows\push-release-tag.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -60,6 +69,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2753EFD4-6B13-4EB8-8257-79E3F458B11E} = {1674FD89-FF97-4559-859A-413B10E5B733}
+		{EB35BDD7-BED5-4268-8785-00ADDCA81D81} = {2753EFD4-6B13-4EB8-8257-79E3F458B11E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1900809E-1CA5-4BBC-981B-1BBB95274321}

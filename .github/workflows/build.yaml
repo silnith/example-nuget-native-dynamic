@@ -1,0 +1,141 @@
+name: Build and Test
+
+on:
+  workflow_call:
+    inputs:
+      solution_file:
+        description: The name of the solution file.
+        type: string
+        required: true
+      project_name:
+        description: The name of the project.  This should match the NuGet package ID.
+        type: string
+        required: true
+
+env: {}
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: windows-2022
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Configure GitHub Packages
+        run: nuget sources add -Name GitHub -UserName ${{ github.actor }} -Password ${{ secrets.GITHUB_TOKEN }} -Source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json -NonInteractive
+      - name: NuGet Restore
+        run: nuget restore ${{ inputs.solution_file }} -NonInteractive
+      - name: Upload Packages Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: packages
+          path: packages/
+  build:
+    name: Build
+    runs-on: windows-2022
+    needs:
+      - setup
+    strategy:
+      matrix:
+        platform:
+          - x86
+          - x64
+          - ARM
+          - ARM64
+        configuration:
+          - Debug
+          - Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v3
+      - name: Download Packages Artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: packages
+          path: packages/
+      - name: Build
+        run: msbuild ${{ inputs.solution_file }} -p:Configuration=${{ matrix.configuration }} -p:Platform=${{ matrix.platform }}
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: build-${{ matrix.configuration }}-${{ matrix.platform }}
+          path: |
+            Debug/
+            Release/
+            x64/
+            ARM/
+            ARM64/
+  test:
+    name: Test Intel
+    runs-on: windows-2022
+    needs:
+      - build
+    strategy:
+      matrix:
+        platform:
+          - x86
+          - x64
+        configuration:
+          - Debug
+          - Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Download Artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: build-${{ matrix.configuration }}-${{ matrix.platform }}
+      - name: Run Tests
+        continue-on-error: true
+        run: |
+          "$(vswhere -property installationPath)\\Common7\\IDE\\Extensions\\TestPlatform\\vstest.console.exe"
+          ".\\**\\*test*.dll"
+          /EnableCodeCoverage
+  test:
+    name: Test ARM
+    runs-on: windows-11-arm
+    needs:
+      - build
+    strategy:
+      matrix:
+        platform:
+          - ARM
+          - ARM64
+        configuration:
+          - Debug
+          - Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Download Artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: build-${{ matrix.configuration }}-${{ matrix.platform }}
+      - name: Run Tests
+        continue-on-error: true
+        run: |
+          "$(vswhere -property installationPath)\\Common7\\IDE\\Extensions\\TestPlatform\\vstest.console.exe"
+          ".\\**\\*test*.dll"
+          /EnableCodeCoverage
+  package:
+    name: Package
+    runs-on: windows-2022
+    needs:
+      - build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Download Builds
+        uses: actions/download-artifact@v8
+        with:
+          pattern: build-*
+          merge-multiple: true
+      - name: Create NuGet Package
+        run: nuget pack ${{ inputs.project_name }}/${{ inputs.project_name }}.nuspec -BasePath ${{ inputs.project_name }} -NonInteractive
+      - name: Upload NuGet Package
+        uses: actions/upload-artifact@v7
+        with:
+          name: NuGet
+          path: '*.nupkg'
