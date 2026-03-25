@@ -160,9 +160,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="silnith\tessellation\polygon.h" />
+    <ClInclude Include="silnith\tessellation\tessellator.h" />
+    <ClInclude Include="silnith\tessellation\vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="silnith\tessellation\polygon.cpp" />
+    <ClCompile Include="silnith\tessellation\tessellator.cpp" />
+    <ClCompile Include="silnith\tessellation\vertex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
