@@ -23,7 +23,7 @@ namespace silnith
 			/// <param name="polygon">A polygon with any number of vertices.</param>
 			/// <returns>A <c>vector</c> of polygons, each with exactly three vertices.</returns>
 			/// <exception cref="std::invalid_argument">If <paramref name="polygon"/> has fewer than three vertices.</exception>
-			std::vector<polygon> tessellate(polygon const polygon) const;
+			TESSELLATOR_API std::vector<polygon> tessellate(polygon const polygon) const;
 		};
 	}
 }

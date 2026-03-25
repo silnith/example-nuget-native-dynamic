@@ -1,5 +1,11 @@
 #pragma once
 
+#if defined(SILNITHTESSELLATIONDYNAMIC_EXPORTS)
+#define TESSELLATOR_API __declspec(dllexport)
+#else
+#define TESSELLATOR_API __declspec(dllimport)
+#endif
+
 namespace silnith
 {
 	namespace tessellation
@@ -16,7 +22,7 @@ namespace silnith
 			/// <summary>
 			/// Creates a new vertex at the origin.
 			/// </summary>
-			vertex(void);
+			TESSELLATOR_API vertex(void);
 
 			/// <summary>
 			/// Creates a new vertex.
@@ -30,25 +36,25 @@ namespace silnith
 			/// vertex origin{ 0, 0, 0 };
 			/// </code>
 			/// </example>
-			vertex(double x, double y, double z, double w = 1);
+			TESSELLATOR_API vertex(double x, double y, double z, double w = 1);
 
 			/// <summary>
 			/// Returns the X coordinate.
 			/// </summary>
 			/// <returns>The X coordinate.</returns>
-			double get_x() const;
+			TESSELLATOR_API double get_x() const;
 
 			/// <summary>
 			/// Returns the Y coordinate.
 			/// </summary>
 			/// <returns>The Y coordinate.</returns>
-			double get_y() const;
+			TESSELLATOR_API double get_y() const;
 
 			/// <summary>
 			/// Returns the Z coordinate.
 			/// </summary>
 			/// <returns>The Z coordinate.</returns>
-			double get_z() const;
+			TESSELLATOR_API double get_z() const;
 
 			/// <summary>
 			/// Returns the W coordinate.
@@ -57,31 +63,31 @@ namespace silnith
 			/// <para>This is used for performing projections and perspective correction.  In normal situations, this will always be <c>1</c>.</para>
 			/// </remarks>
 			/// <returns>The W coordinate.</returns>
-			double get_w() const;
+			TESSELLATOR_API double get_w() const;
 
 			/// <summary>
 			/// Sets the X coordinate.
 			/// </summary>
 			/// <param name="x">The new X coordinate.</param>
-			void set_x(double x);
+			TESSELLATOR_API void set_x(double x);
 
 			/// <summary>
 			/// Sets the Y coordinate.
 			/// </summary>
 			/// <param name="y">The new Y coordinate.</param>
-			void set_y(double y);
+			TESSELLATOR_API void set_y(double y);
 
 			/// <summary>
 			/// Sets the Z coordinate.
 			/// </summary>
 			/// <param name="z">The new Z coordinate.</param>
-			void set_z(double z);
+			TESSELLATOR_API void set_z(double z);
 
 			/// <summary>
 			/// Sets the W coordinate.
 			/// </summary>
 			/// <param name="w">The new W coordinate.</param>
-			void set_w(double w);
+			TESSELLATOR_API void set_w(double w);
 
 		private:
 			double x;
