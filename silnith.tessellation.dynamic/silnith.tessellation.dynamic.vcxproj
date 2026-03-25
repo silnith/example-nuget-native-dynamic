@@ -159,7 +159,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
     <ClInclude Include="silnith\tessellation\polygon.h" />
     <ClInclude Include="silnith\tessellation\tessellator.h" />
     <ClInclude Include="silnith\tessellation\vertex.h" />
