@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup Condition="$(Configuration) == 'Debug'">
+        <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\$(PlatformTarget)\Debug\silnith.tessellation.dynamic.dll">
+            <Link>silnith.tessellation.dynamic.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    <ItemGroup Condition="$(Configuration) != 'Debug'">
+        <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\$(PlatformTarget)\Release\silnith.tessellation.dynamic.dll">
+            <Link>silnith.tessellation.dynamic.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+</Project>

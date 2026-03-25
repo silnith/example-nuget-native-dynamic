@@ -177,6 +177,11 @@
     <ClCompile Include="silnith\tessellation\tessellator.cpp" />
     <ClCompile Include="silnith\tessellation\vertex.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="silnith.tessellation.dynamic.nuspec" />
+    <None Include="silnith.tessellation.dynamic.props" />
+    <None Include="silnith.tessellation.dynamic.targets" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
