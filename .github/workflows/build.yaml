@@ -67,7 +67,7 @@ jobs:
             x64/
             ARM/
             ARM64/
-  test:
+  test-intel:
     name: Test Intel
     runs-on: windows-2022
     needs:
@@ -93,7 +93,7 @@ jobs:
           "$(vswhere -property installationPath)\\Common7\\IDE\\Extensions\\TestPlatform\\vstest.console.exe"
           ".\\**\\*test*.dll"
           /EnableCodeCoverage
-  test:
+  test-arm:
     name: Test ARM
     runs-on: windows-11-arm
     needs:
