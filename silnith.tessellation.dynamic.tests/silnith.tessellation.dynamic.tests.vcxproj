@@ -160,7 +160,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="silnith.tessellation.dynamic.tests.cpp" />
+    <ClCompile Include="tesselator_tests.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\silnith.tessellation.dynamic\silnith.tessellation.dynamic.vcxproj">
+      <Project>{f3518364-658a-4e87-8d4f-384813bece1c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
