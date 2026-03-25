@@ -89,11 +89,9 @@ jobs:
         with:
           name: build-${{ matrix.configuration }}-${{ matrix.platform }}
       - name: Run Tests
-        continue-on-error: true
         run: |
-          "$(vswhere -property installationPath)\\Common7\\IDE\\Extensions\\TestPlatform\\vstest.console.exe"
-          ".\\**\\*test*.dll"
-          /EnableCodeCoverage
+          $(vswhere -property installationPath)\Common7\IDE\Extensions\TestPlatform\vstest.console.exe
+          .\**\*test*.dll
   test-arm:
     name: Test ARM
     runs-on: windows-11-arm
@@ -115,11 +113,9 @@ jobs:
         with:
           name: build-${{ matrix.configuration }}-${{ matrix.platform }}
       - name: Run Tests
-        continue-on-error: true
         run: |
-          "$(vswhere -property installationPath)\\Common7\\IDE\\Extensions\\TestPlatform\\vstest.console.exe"
-          ".\\**\\*test*.dll"
-          /EnableCodeCoverage
+          $(vswhere -property installationPath)\Common7\IDE\Extensions\TestPlatform\vstest.console.exe
+          .\**\*test*.dll
   package:
     name: Package
     runs-on: windows-2022
