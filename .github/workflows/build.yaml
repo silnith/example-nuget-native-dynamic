@@ -51,6 +51,7 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v3
       - name: Download Packages Artifact
+        continue-on-error: true
         uses: actions/download-artifact@v8
         with:
           name: packages
