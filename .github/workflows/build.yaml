@@ -57,7 +57,7 @@ jobs:
           name: packages
           path: packages/
       - name: Build
-        run: msbuild ${{ inputs.solution_file }} -p:Configuration=${{ matrix.configuration }} -p:Platform=${{ matrix.platform }}
+        run: msbuild ${{ inputs.solution_file }} -p:Configuration=${{ matrix.configuration }} -p:Platform=${{ matrix.platform }} -p:ContinuousIntegrationBuild=true
       - name: Upload Artifacts
         uses: actions/upload-artifact@v7
         with:
