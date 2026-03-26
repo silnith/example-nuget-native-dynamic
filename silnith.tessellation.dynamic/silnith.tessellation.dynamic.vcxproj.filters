@@ -55,5 +55,6 @@
     <None Include="README.md">
       <Filter>NuGet Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
