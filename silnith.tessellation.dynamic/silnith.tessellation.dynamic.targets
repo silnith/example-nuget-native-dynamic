@@ -5,10 +5,18 @@
             <Link>silnith.tessellation.dynamic.dll</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\$(PlatformTarget)\Debug\silnith.tessellation.dynamic.pdb">
+            <Link>silnith.tessellation.dynamic.pdb</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
     <ItemGroup Condition="$(Configuration) != 'Debug'">
         <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\$(PlatformTarget)\Release\silnith.tessellation.dynamic.dll">
             <Link>silnith.tessellation.dynamic.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="$(MSBuildThisFileDirectory)..\..\lib\native\$(PlatformTarget)\Release\silnith.tessellation.dynamic.pdb">
+            <Link>silnith.tessellation.dynamic.pdb</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
