@@ -4,7 +4,7 @@
 		 xsi:schemaLocation="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/src/NuGet.Core/NuGet.Packaging/compiler/resources/nuspec.xsd">
 	<metadata>
 		<id>silnith.tessellation.dynamic</id>
-		<version>0.0.1</version>
+		<version>0.0.2</version>
 		<description>A trivial C++ library for tessellating arbitrary polygons into triangle fans.</description>
 		<authors>silnith</authors>
 		<projectUrl>https://github.com/silnith/example-nuget-native-dynamic</projectUrl>
@@ -15,6 +15,7 @@
 		<copyright>silnith.org</copyright>
 		<language>en-US</language>
 		<tags>native tessellation x86 x64 arm arm64</tags>
+		<repository type="git" url="https://github.com/silnith/example-nuget-native-dynamic.git" />
 		<title>silnith.tessellation.dynamic</title>
 		<dependencies>
 			<group targetFramework="native" />
