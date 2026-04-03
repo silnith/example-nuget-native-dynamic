@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
 name: Push Branch
 
 on:
@@ -5,13 +7,12 @@ on:
     branches:
       - '*'
 
-env: {}
-
 jobs:
   call-build:
-    name: Standard Build
+    name: Build
+    permissions:
+      contents: read
+      packages: read
+      checks: write
     uses: ./.github/workflows/build.yaml
-    with:
-      solution_file: example-nuget-native-dynamic.sln
-      project_name: silnith.tessellation.dynamic
     secrets: inherit
